@@ -1,5 +1,5 @@
 
-# Sample Unity Interaction <sup>📌</sup>
+# dig250-unity-interaction <sup>📌</sup>
 
 A sample Unity (2021.2.7f1) project with:
 
