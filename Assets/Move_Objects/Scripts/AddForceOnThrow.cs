@@ -52,6 +52,6 @@ public class AddForceOnThrow : MonoBehaviour {
         // update velocity
         velocity = (rb.position - lastPos) * 50;
         lastPos = rb.position;
-        Debug.Log (velocity);
+        // Debug.Log (velocity);
     }
 }
