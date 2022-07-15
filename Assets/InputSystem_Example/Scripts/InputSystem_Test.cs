@@ -5,11 +5,15 @@ using UnityEngine.InputSystem;
 
 
 /**
- *  Test script for InputSystem 
+ *  Test script for InputSystem
  *  - Search for InputSystem in classes for other examples:
  *  References:
  *  https://www.youtube.com/watch?v=kGykP7VZCvg
  *  https://learn.unity.com/tutorial/taking-advantage-of-the-input-system-scripting-api?uv=2020.1
+
+OTHER IMPLEMENTATIONS
+- Simple version using Interfaces https://stackoverflow.com/a/72941047/441878
+- Another version with Interfaces => Graverobber's Revenge
  */
 
 
@@ -56,6 +60,11 @@ public class InputSystem_Test : MonoBehaviour, PlayerInput.ITestActions
         inputControls.Test.Move.canceled += ctx => move = Vector2.zero;
 
 
+        // another way subscribe to InputActions
+        inputControls.Test.Move.performed += HandleInputAction;
+        inputControls.Test.Move.canceled += HandleInputAction;
+
+
         // enable the entire action map
         inputControls.Test.Enable();
     }
@@ -67,6 +76,11 @@ public class InputSystem_Test : MonoBehaviour, PlayerInput.ITestActions
         inputControls.Test.Move.performed -= ctx => MoveExample(ctx.ReadValue<Vector2>());
         inputControls.Test.Move.performed -= ctx => move = ctx.ReadValue<Vector2>();
         inputControls.Test.Move.canceled -= ctx => move = Vector2.zero;
+
+
+        // another way subscribe to InputActions
+        inputControls.Test.Move.performed -= HandleInputAction;
+        inputControls.Test.Move.canceled -= HandleInputAction;
 
         // disable the entire action map
         inputControls.Test.Disable();
@@ -95,6 +109,50 @@ public class InputSystem_Test : MonoBehaviour, PlayerInput.ITestActions
     {
         Debug.Log("inputControls.Test.HelloWorld.canceled => ");
     }
+
+
+    /// <summary>
+    /// Handle all UnityEvents from InputSystem
+    /// </summary>
+    /// <param name="context"></param>
+    private void HandleInputAction(InputAction.CallbackContext context)
+    {
+        Debug.Log("context.action.name = " + context.action.name);
+
+        // another way
+
+        if (context.action.name == "DisplayNextSlide")
+        {
+            // logic
+        }
+        else if (context.action.name == "DisplayPreviousSlide")
+        {
+            // logic
+        }
+        else if (context.action.name == "RestartSlides")
+        {
+            // logic
+        }
+
+        // access to all phases
+        if (context.started) Debug.Log("Event started");
+        else if (context.performed) Debug.Log("Event is continuing");
+        else if (context.canceled) Debug.Log("Event canceled");
+
+        // yet another way to access phases
+        switch (context.phase)
+        {
+            case InputActionPhase.Started:
+            case InputActionPhase.Performed:
+                // logic
+                break;
+            case InputActionPhase.Canceled:
+                // logic
+                break;
+        }
+
+    }
+
 
 
 
