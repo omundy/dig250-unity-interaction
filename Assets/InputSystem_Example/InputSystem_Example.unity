@@ -169,7 +169,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.37479, y: 1}
+    m_SensorSize: {x: 1.1552347, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -185,7 +185,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82739581}
-  m_LocalRotation: {x: 0.31163752, y: -0.000000025336124, z: 0.000000008309491, w: 0.9502011}
+  m_LocalRotation: {x: 0.31163752, y: -0.000000017547986, z: 0.0000000057552145, w: 0.9502011}
   m_LocalPosition: {x: 0, y: 17.07, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1095,12 +1095,12 @@ GameObject:
   - component: {fileID: 1050552429}
   - component: {fileID: 1050552428}
   m_Layer: 0
-  m_Name: InputManager
+  m_Name: PlayerInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1050552428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 5d8ef4730f1524f45ba37342274095e8, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -1125,7 +1125,67 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 44465ef2-2557-4f53-ae87-95b7db7b8539
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2c427d0e-09a3-4d3b-a7f0-d8f8a2d3aafb
+    m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e24bdf11-5e52-485f-9efd-d8f4c77dd6df
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c83f280c-cd63-4476-a6ea-a16b6c52b144
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 19346ee7-733b-443e-8130-952993d5bb16
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8b3e5ca3-21d6-4adc-bd23-2015e6a38619
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5b0099ca-3230-450d-9d56-635ec159ec7f
+    m_ActionName: UI/Point[/Mouse/position,/Pen/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ba8ab4ec-3460-4235-9606-defa6be1f910
+    m_ActionName: UI/Click[/Mouse/leftButton,/Pen/tip]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 17d0eca2-e948-4f45-a664-da1a5fb5fb21
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: aac8bf54-867a-42c5-8d32-2aeaa9ace6ec
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 79bd5aba-b9ee-4ca5-bfa7-2c93b13b8901
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: da1ad729-9a08-4899-b2d7-2c40936be69d
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f770b813-97fc-45ec-a6b2-3dfc51e15353
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c8b8bdf6-efe5-4ce5-bc7c-b11bd22d4b1b
+    m_ActionName: Test/LeftButtonMouse[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1c1bde05-ab42-4cef-b8a5-58cb1b25eae6
+    m_ActionName: Test/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1682,7 +1742,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634466878}
-  m_LocalRotation: {x: 0.31163752, y: -0.000000025336124, z: 0.000000008309491, w: 0.9502011}
+  m_LocalRotation: {x: 0.31163752, y: -0.000000017547986, z: 0.0000000057552145, w: 0.9502011}
   m_LocalPosition: {x: 0, y: 17.07, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1835,6 +1895,7 @@ GameObject:
   - component: {fileID: 1737054604}
   - component: {fileID: 1737054605}
   - component: {fileID: 1737054609}
+  - component: {fileID: 1737054611}
   - component: {fileID: 1737054608}
   - component: {fileID: 1737054610}
   m_Layer: 0
@@ -1886,13 +1947,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bb28bc6942a4458b94f9f59ff42c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
-  jumpForce: 300
-  grounded: 0
-  groundCheck: {fileID: 444343502}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  moveInput: {x: 0, y: 0}
+  jumpInput: 0
 --- !u!54 &1737054609
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1916,7 +1972,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737054603}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41128574510484d8ebfc8f0d305f47f9, type: 3}
   m_Name: 
@@ -1925,6 +1981,27 @@ MonoBehaviour:
   speed: 10
   mousePosition: {x: 0, y: 0}
   actionAsset: {fileID: -944628639613478452, guid: 5d8ef4730f1524f45ba37342274095e8, type: 3}
+--- !u!114 &1737054611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737054603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102c66b78ff1c49d290c58de3fc7d4d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheck: {fileID: 444343502}
+  grounded: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  moveSpeed: 5
+  jumpForce: 30
+  moveInput: {x: 0, y: 0}
+  jumpInput: 0
 --- !u!1 &1986460389
 GameObject:
   m_ObjectHideFlags: 3

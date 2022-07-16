@@ -10,17 +10,14 @@ using UnityEngine.InputSystem;
  *  References:
  *  https://www.youtube.com/watch?v=kGykP7VZCvg
  *  https://learn.unity.com/tutorial/taking-advantage-of-the-input-system-scripting-api?uv=2020.1
-
-OTHER IMPLEMENTATIONS
-- Simple version using Interfaces https://stackoverflow.com/a/72941047/441878
-- Another version with Interfaces => Graverobber's Revenge
+ *  https://stackoverflow.com/a/72941047/441878
  */
 
-
-public class InputSystem_Test : MonoBehaviour, PlayerInput.ITestActions
+public class InputSystem_Test : MonoBehaviour, InputControls.ITestActions
 {
     // reference to InputSystem controls
-    private PlayerInput inputControls;
+    private InputControls inputControls;
+
 
     // for movement example
     [SerializeField] Vector2 move;
@@ -34,7 +31,7 @@ public class InputSystem_Test : MonoBehaviour, PlayerInput.ITestActions
     private void Awake()
     {
         // create instance of InputSystem controls
-        inputControls = new PlayerInput();
+        inputControls = new InputControls();
     }
 
     private void OnEnable()
