@@ -6,7 +6,7 @@ using UnityEngine;
  *  Controls player movement only
  */
 
-public class PlayerMovement : MonoBehaviour
+public class MovementController : MonoBehaviour
 {
     // movement references and checks
     private Rigidbody rb;

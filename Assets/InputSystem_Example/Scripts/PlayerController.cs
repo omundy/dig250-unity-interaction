@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     // input settings
     private InputControls inputControls;
     // script to control movement
-    PlayerMovement playerMovement;
+    MovementController movementController;
 
     [SerializeField] private Vector2 moveInput;
     [SerializeField] private bool jumpInput;
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
         // create instance of InputSystem settings
         inputControls = new InputControls();
         // assign reference
-        playerMovement = GetComponent<PlayerMovement>();
+        movementController = GetComponent<MovementController>();
     }
 
     private void OnEnable()
@@ -63,8 +63,9 @@ public class PlayerController : MonoBehaviour
                 jumpInput = false;
                 break;
         }
+
         // assign in movement script
-        playerMovement.jumpInput = jumpInput;
+        movementController.jumpInput = jumpInput;
     }
 
     void OnMoveInput(InputAction.CallbackContext context)
@@ -74,8 +75,9 @@ public class PlayerController : MonoBehaviour
             moveInput = context.ReadValue<Vector2>();
         else
             moveInput = Vector2.zero;
+
         // assign in movement script
-        playerMovement.moveInput = moveInput;
+        movementController.moveInput = moveInput;
     }
 
 }
