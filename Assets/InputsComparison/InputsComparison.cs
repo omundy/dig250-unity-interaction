@@ -3,25 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.EventSystems;
 
 /**
  *  A simple comparison of Unity input types
- *  1. "OnMouse"     (old)   e.g. OnMouseDown() listeners
- *  2. "InputLegacy" (older) e.g. Input.GetMouseButtonDown(0) 
- *  3. "InputSystem" (new)   e.g. Mouse.current.leftButton.wasPressed
+ *  1. "OnMouse"      (old)    e.g. listen for => OnMouseDown() 
+ *  2. "InputLegacy"  (older)  e.g. test for => Input.GetMouseButtonDown(0) 
+ *  3. "InputSystem"  (new)    e.g. test for => Mouse.current.leftButton.wasPressed
+ *  4. "EventSystem"  (older)  e.g. listen for => OnPointerClick() 
  *  
  *  Also, shows an example of the "Command" pattern, as each listener is routed to a "handler" function for outcomes
  *  https://gameprogrammingpatterns.com/command.html
  */
 
-public class InputsComparison : MonoBehaviour
+public class InputsComparison : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
     public TMP_Text textObj;
     public TMP_Text textObjGeneral;
     public SpriteRenderer spriteRenderer;
     public Color32 color;
 
-    public enum Mode { OnMouse, InputLegacy, InputSystem };
+    public enum Mode { OnMouse, InputLegacy, InputSystem, EventSystem };
     public Mode mode;
 
     [Tooltip("To identify only the layers that can receive interaction")]
@@ -300,6 +302,57 @@ public class InputsComparison : MonoBehaviour
         InputSystem_DetectTouchPhase();
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     *  EventSystem 
+     *  https://docs.unity3d.com/2021.3/Documentation/Manual/EventSystem.html
+     *  https://docs.unity3d.com/Packages/com.unity.ugui@2.0/api/UnityEngine.EventSystems.IPointerClickHandler.html
+     *  - Requires collider on object + Physics 2D Raycaster on camera 
+     *  - Works in Unity Remote
+     */
+
+
+    public void OnPointerEnter(PointerEventData eventData)
+        => OnPointerClick_Handler(_hover: 1, _click: -1, _hitObject: gameObject, _eventName: "OnPointerEnter", eventData);
+    public void OnPointerExit(PointerEventData eventData)
+        => OnPointerClick_Handler(_hover: 0, _click: -1, _hitObject: null, _eventName: "OnPointerExit", eventData);
+
+    public void OnPointerDown(PointerEventData eventData)
+        => OnPointerClick_Handler(_hover: -1, _click: 1, _hitObject: gameObject, _eventName: "OnPointerClick", eventData);
+    public void OnPointerUp(PointerEventData eventData)
+        => OnPointerClick_Handler(_hover: -1, _click: 0, _hitObject: gameObject, _eventName: "OnPointerUp", eventData);
+
+    /// <summary>
+    /// Handle data from OnMouse events
+    /// </summary>
+    /// <param name="_hover">-1 means no change, 0=false, 1=true</param>
+    /// <param name="_click">-1 means no change, 0=false, 1=true</param>
+    /// <param name="_hitObject"></param>
+    /// <param name="_eventName"></param>
+    void OnPointerClick_Handler(int _hover, int _click, GameObject _hitObject, string _eventName, PointerEventData _eventData)
+    {
+        if (mode != Mode.EventSystem) return;
+        UpdateEventCategory(gameObject, "EventSystem");
+        //Debug.Log("clicked " + _eventData);
+        // assign states
+        if (_hover >= 0) hover = _hover == 1;
+        if (_click >= 0) click = _click == 1;
+        hitObject = _hitObject;
+        SetSpriteState(hitObject);
+        eventName = _eventName;
+        Report();
+    }
 
 
 
