@@ -25,7 +25,7 @@ public class DebugShowDirection : MonoBehaviour {
     void DrawLine ()
     {
         lineRenderer.SetPosition (0, transform.position);
-        lineRenderer.SetPosition (1, rb.velocity * factor + transform.position);
+        lineRenderer.SetPosition (1, rb.linearVelocity * factor + transform.position);
     }
 
 }

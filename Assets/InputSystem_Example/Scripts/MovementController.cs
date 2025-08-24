@@ -46,10 +46,10 @@ public class MovementController : MonoBehaviour
         jumpInput = false;
 
         // get current velocity
-        Vector3 newVolocity = rb.velocity;
+        Vector3 newVolocity = rb.linearVelocity;
         newVolocity.x = moveInput.x * moveSpeed;
         newVolocity.z = moveInput.y * moveSpeed;
-        rb.velocity = newVolocity;
+        rb.linearVelocity = newVolocity;
     }
 
 }
